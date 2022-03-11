@@ -19,5 +19,3 @@ func Wrap(err error) error {
 	// stack trace error
 	return fmt.Errorf("%w\n%s", err, trace)
 }
-
-func hoge() {}
