@@ -1,14 +1,11 @@
 ```
-# 日本語フォント取得
 apt update
-apt install -y fonts-ipafont
+# LibreOfficeインストール
+## 印刷範囲設定が反映される最低限の構成をインストールするように調査した方が良い
+apt install -y libreoffice
+# 日本語フォント取得
 apt install -y fontconfig
+apt install -y fonts-ipafont
 fc-cache -fv
-# serverless-libreofficeを取得
-weget https://github.com/vladgolubev/serverless-libreoffice/releases#:~:text=Jan%2010%2C%202020-,lo.tar.gz,-135%20MB
-tar -xf lo.tar.gz
-# 実行
-## 2回実行しないとPDFが生成されない https://github.com/vladgolubev/serverless-libreoffice/issues/31
-./instdir/program/soffice.bin --headless --invisible --nodefault --nofirststartwizard --nolockcheck --nologo --norestore --convert-to pdf --outdir ./ tmp.xlsx
-./instdir/program/soffice.bin --headless --invisible --nodefault --nofirststartwizard --nolockcheck --nologo --norestore --convert-to pdf --outdir ./ tmp.xlsx
+soffice --headless --invisible --nodefault --nofirststartwizard --nolockcheck --nologo --norestore --convert-to pdf --outdir . *.xlsx
 ```
